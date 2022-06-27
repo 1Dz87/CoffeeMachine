@@ -1,9 +1,14 @@
-package coffeemachine.entity;
+package coffeemachine.entity.drink;
+
+import coffeemachine.exception.ContainerIsEmptyException;
+import coffeemachine.exception.ContainerIsFullException;
+import coffeemachine.processmanager.CoffeeMachine;
 
 public abstract class Drink {
     private int coffee;
     private int milk;
     private int water;
+
 
     public Drink(int coffee, int milk, int water) {
         this.coffee = coffee;
@@ -22,4 +27,6 @@ public abstract class Drink {
     public int getWater() {
         return water;
     }
+
+    public abstract void make(CoffeeMachine coffeeMachine) throws ContainerIsEmptyException, ContainerIsFullException;
 }
