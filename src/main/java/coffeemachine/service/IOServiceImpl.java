@@ -1,5 +1,7 @@
 package coffeemachine.service;
 
+import coffeemachine.entity.enums.Button;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,11 +13,11 @@ public class IOServiceImpl implements IOService {
         this.bufferedReader = new BufferedReader(new InputStreamReader(System.in));
     }
 
-    public int read() {
+    public Button read() {
         try {
             String s = bufferedReader.readLine();
-            return Integer.parseInt(s);
-        } catch (IOException e) {
+            return Button.values()[Integer.parseInt(s)];
+        } catch (IOException | ArrayIndexOutOfBoundsException e) {
             write("Произошла Ошибка. Повторите ввод");
             return read();
         }

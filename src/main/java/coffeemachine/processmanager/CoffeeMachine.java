@@ -1,32 +1,21 @@
 package coffeemachine.processmanager;
 
-import coffeemachine.entity.container.CoffeContainer;
-import coffeemachine.entity.container.GarbageContainer;
-import coffeemachine.entity.container.MilkContainer;
-import coffeemachine.entity.container.WaterContainer;
 import coffeemachine.entity.drink.BlackCoffee;
 import coffeemachine.entity.drink.Capuchino;
 import coffeemachine.entity.drink.Drink;
 import coffeemachine.entity.drink.HotMilk;
+import coffeemachine.entity.enums.Button;
 import coffeemachine.exception.ContainerIsEmptyException;
 import coffeemachine.exception.ContainerIsFullException;
 import coffeemachine.service.IOService;
 import coffeemachine.service.IOServiceImpl;
 
 public class CoffeeMachine {
-    private CoffeContainer coffeContainer;
-    private GarbageContainer garbageContainer;
-    private MilkContainer milkContainer;
-    private WaterContainer waterContainer;
     private IOService ioService;
     private static final String DRINK_READY_MESSAGE = "Ваш напиток готов";
 
 
     public CoffeeMachine() {
-        this.coffeContainer = new CoffeContainer(10);
-        this.garbageContainer = new GarbageContainer(5);
-        this.milkContainer = new MilkContainer(3);
-        this.waterContainer = new WaterContainer(6);
         this.ioService = new IOServiceImpl();
     }
 
@@ -36,17 +25,17 @@ public class CoffeeMachine {
     }
 
     private void chooseOperation() {
-        int operation = ioService.read();
+        Button operation = ioService.read();
         switch (operation) {
-            case 0:
+            case EXIT:
                 break;
-            case 1:
+            case BLACK_COFFE:
                 createCoffee();
                 break;
-            case 2:
+            case CAPUCHINO:
                 createCapuchino();
                 break;
-            case 3:
+            case HOT_MILK:
                 createHotMilk();
                 break;
             default:
@@ -55,21 +44,6 @@ public class CoffeeMachine {
         }
     }
 
-    public CoffeContainer getCoffeContainer() {
-        return coffeContainer;
-    }
-
-    public GarbageContainer getGarbageContainer() {
-        return garbageContainer;
-    }
-
-    public MilkContainer getMilkContainer() {
-        return milkContainer;
-    }
-
-    public WaterContainer getWaterContainer() {
-        return waterContainer;
-    }
     private  void createHotMilk(){
         Drink hotMilk = new HotMilk();
         try {

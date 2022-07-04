@@ -1,5 +1,6 @@
 package coffeemachine.entity.drink;
 
+import coffeemachine.entity.enums.Container;
 import coffeemachine.exception.ContainerIsEmptyException;
 import coffeemachine.exception.ContainerIsFullException;
 import coffeemachine.processmanager.CoffeeMachine;
@@ -12,9 +13,8 @@ public class Capuchino extends Drink {
     @Override
     public void make(CoffeeMachine coffeeMachine)
             throws ContainerIsEmptyException, ContainerIsFullException {
-        coffeeMachine.getCoffeContainer().changeCapacity(this);
-        coffeeMachine.getMilkContainer().changeCapacity(this);
-        coffeeMachine.getWaterContainer().changeCapacity(this);
-        coffeeMachine.getGarbageContainer().changeCapacity(this);
+        for (int i = 0; i < Container.values().length; i++) {
+            Container.values()[i].changeCapacity(this);
+        }
     }
 }

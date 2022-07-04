@@ -1,7 +1,9 @@
 package coffeemachine.service;
 
+import coffeemachine.entity.enums.Button;
+
 public interface IOService {
-    int read();
+    Button read();
     void write(String message);
 
 }
