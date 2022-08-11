@@ -26,6 +26,7 @@ public class CoffeeMachine {
 
     private void chooseOperation() {
         Button operation = ioService.read();
+        ioService.write("test");
         operation.create(this);
 
     }
