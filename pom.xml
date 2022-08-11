@@ -8,5 +8,14 @@
     <artifactId>CoffeeMachine</artifactId>
     <version>1.0.0</version>
 
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.8.2</version>
+            <scope>test</scope>
+        </dependency>
 
+    </dependencies>
 </project>

@@ -26,57 +26,8 @@ public class CoffeeMachine {
 
     private void chooseOperation() {
         Button operation = ioService.read();
-        switch (operation) {
-            case EXIT:
-                break;
-            case BLACK_COFFE:
-                createCoffee();
-                break;
-            case CAPUCHINO:
-                createCapuchino();
-                break;
-            case HOT_MILK:
-                createHotMilk();
-                break;
-            default:
-                ioService.write("Неизвестная операция");
-                run();
-        }
-    }
+        operation.create(this);
 
-    private  void createHotMilk(){
-        Drink hotMilk = new HotMilk();
-        try {
-            hotMilk.make(this);
-            ioService.write(DRINK_READY_MESSAGE);
-        } catch (ContainerIsEmptyException | ContainerIsFullException e) {
-            ioService.write(e.getMessage());
-        }
-
-        run();
-    }
-
-    private void createCapuchino() {
-        Drink capuchino = new Capuchino();
-        try {
-            capuchino.make(this);
-            ioService.write(DRINK_READY_MESSAGE);
-        } catch (ContainerIsEmptyException | ContainerIsFullException e) {
-            ioService.write(e.getMessage());
-        }
-        run();
-    }
-
-    private void createCoffee() {
-        Drink coffee = new BlackCoffee();
-        try {
-            coffee.make(this);
-            ioService.write(DRINK_READY_MESSAGE);
-        } catch (ContainerIsEmptyException | ContainerIsFullException e) {
-            ioService.write(e.getMessage());
-        }
-
-        run();
     }
 
     private void welcomeMessage() {
